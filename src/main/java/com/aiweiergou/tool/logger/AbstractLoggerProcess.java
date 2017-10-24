@@ -1,5 +1,6 @@
 package com.aiweiergou.tool.logger;
 
+import com.aiweiergou.tool.logger.constant.LogLevelConstant;
 import com.aiweiergou.tool.logger.enums.LogFrameworkType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.core.config.LoggerConfig;
@@ -24,6 +25,8 @@ import static com.aiweiergou.tool.logger.constant.LogConstant.*;
  */
 public abstract class AbstractLoggerProcess {
     private Logger log = LoggerFactory.getLogger(AbstractLoggerProcess.class);
+
+    protected String defaultLevel = LogLevelConstant.INFO;
 
     protected final LogFrameworkType logFrameworkType;
     protected final ConcurrentHashMap<String, Object> loggerMap = new ConcurrentHashMap<>();
@@ -108,4 +111,8 @@ public abstract class AbstractLoggerProcess {
      * @param o 可自由实现的入参
      */
     public abstract void process(Object o);
+
+    public void setDefaultLevel(String defaultLevel) {
+        this.defaultLevel = defaultLevel;
+    }
 }

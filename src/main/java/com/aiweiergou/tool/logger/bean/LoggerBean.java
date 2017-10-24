@@ -9,6 +9,9 @@ import java.io.Serializable;
  */
 public class LoggerBean implements Serializable {
     private String name;
+    /**
+     * 日志等级 参照 LogLevelConstant
+     */
     private String level;
 
     public LoggerBean() {

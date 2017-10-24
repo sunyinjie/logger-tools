@@ -21,7 +21,10 @@ public class ChangeLogLevelProcess extends AbstractLoggerProcess {
 
     @Override
     public void process(Object o) {
-        if (o instanceof String) {
+        if (null == o) {
+            // 默认处理所有logger为默认级别info
+            this.setLogLevel(defaultLevel);
+        }else if (o instanceof String) {
             // 默认处理所有logger
             this.setLogLevel((String) o);
         } else if (o instanceof List) {
